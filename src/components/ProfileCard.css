@@ -1,0 +1,287 @@
+/* Profile Card Styles */
+.pc-card-wrapper {
+  --card-opacity: 0.8;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --background-x: 50%;
+  --background-y: 50%;
+  --pointer-from-center: 0;
+  --pointer-from-top: 0;
+  --pointer-from-left: 0;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  
+  perspective: 1000px;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.pc-card {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.pc-card-wrapper.active .pc-card {
+  transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) scale(1.02);
+}
+
+.pc-inside {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--inner-gradient);
+  border-radius: inherit;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.pc-inside::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--behind-gradient);
+  opacity: var(--pointer-from-center);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pc-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at var(--pointer-x) var(--pointer-y),
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    transparent 50%
+  );
+  opacity: calc(var(--pointer-from-center) * 0.8);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.pc-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%
+  );
+  opacity: calc(var(--pointer-from-center) * 0.3);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.pc-content {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pc-avatar-content {
+  flex: 1;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.pc-card-wrapper.active .avatar {
+  transform: scale(1.05);
+}
+
+.pc-user-info {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.pc-user-details {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.pc-mini-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.pc-mini-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pc-user-text {
+  text-align: right;
+  direction: rtl;
+}
+
+.pc-handle {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2px;
+}
+
+.pc-status {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pc-contact-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.pc-contact-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.pc-details {
+  text-align: center;
+  direction: rtl;
+}
+
+.pc-details h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.pc-details p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.4;
+  max-width: 100%;
+  word-wrap: break-word;
+  margin-bottom: 16px;
+}
+
+.pc-status-title {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 8px 0 !important;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pc-contact-btn {
+  background: rgba(55, 113, 56, 0.9);
+  border: 1px solid rgba(55, 113, 56, 1);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  margin-top: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+.pc-contact-btn:hover {
+  background: rgba(55, 113, 56, 1);
+  border-color: rgba(55, 113, 56, 1);
+  transform: translateY(-1px);
+}
+
+.pc-contact-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pc-card {
+    height: 380px;
+  }
+  
+  .pc-inside {
+    padding: 20px;
+  }
+  
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .pc-details h3 {
+    font-size: 18px;
+  }
+  
+  .pc-details p {
+    font-size: 13px;
+  }
+}
+
+/* Advisory page specific styles */
+.advisory-card .pc-inside::before {
+  background: var(--behind-gradient);
+}
+
+.advisory-card .pc-contact-btn {
+  background: rgba(55, 113, 56, 0.2);
+  border-color: rgba(55, 113, 56, 0.4);
+}
+
+.advisory-card .pc-contact-btn:hover {
+  background: rgba(55, 113, 56, 0.3);
+  border-color: rgba(55, 113, 56, 0.6);
+}

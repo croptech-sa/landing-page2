@@ -1,0 +1,11 @@
+You are working on a high-end, data-driven website for CropTech — a smart institutional afforestation platform that blends environmental impact with cutting-edge technology (AI, geolocation, ESG reporting). The goal is to design a futuristic interface that reflects environmental trust, verified impact, and institutional credibility.
+
+Key objectives:
+- Visually align with the brand's identity: Primary #377138, Secondary Dark #234723, and Cairo font for Arabic.
+- The layout must be clean, fast, mobile-first, and optimized for accessibility and all screen sizes.
+- All animations should use motion.dev, GSAP, or Framer Motion (React compatible) — smooth and quick to reflect a fast-paced, modern platform.
+- Use Tailwind CSS, React components, and Lucide React icons only (unless instructed otherwise).
+- Stick to a section-by-section design approach. Each section should feel unique but connected, with smooth transitions and structural consistency.
+- Hero section includes interactive background animation (OGL-based ripple effect) + bold white text over dark-to-primary gradient.
+- Text tone must reflect clarity, innovation, and technical trust. Avoid fluff or marketing buzzwords.
+- Design must reflect billion-dollar credibility, not a template-based or cookie-cutter look.
