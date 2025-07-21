@@ -64,10 +64,13 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
     setIsMobileMenuOpen(false);
   };
 
-  const textColorClass = isOverDarkBackground ? "text-white" : "text-black dark:text-white";
-  const logoFilter = isOverDarkBackground
-    ? "filter invert brightness-0"
-    : "filter invert-0 brightness-100";
+  const textColorClass = isScrolled
+    ? 'text-black dark:text-white'
+    : isOverDarkBackground
+    ? 'text-white'
+    : 'text-black dark:text-white';
+
+  const logoStyle = isScrolled ? { filter: 'none', color: '#234723' } : {};
 
   return (
     <nav
@@ -81,7 +84,8 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
           <img
             src="/logo.svg"
             alt="شعار الموقع"
-            className={`transition-all duration-300 ${isScrolled ? 'w-20 h-20' : 'w-24 h-24 md:w-28 md:h-28'} ${logoFilter}`}
+            className={`transition-all duration-300 ${isScrolled ? 'w-20 h-20' : 'w-24 h-24 md:w-28 md:h-28'}`}
+            style={logoStyle}
           />
         </div>
 
@@ -107,7 +111,9 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
-            <button className="border border-[#377138] bg-white text-[#377138] px-5 py-2 rounded-lg font-medium hover:bg-gray-100 transition">
+            <button
+              className={`px-5 py-2 rounded-lg font-medium transition ${isScrolled ? 'bg-[#234723] text-white' : 'border border-[#377138] bg-white text-[#377138] hover:bg-gray-100'}`}
+            >
               ابدأ الآن
             </button>
           </div>
