@@ -87,21 +87,21 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
           />
         </div>
 
-        <div className="hidden md:flex items-center space-x-8 space-x-reverse">
-          <Link to="/" className={`transition font-medium ${textColorClass} hover:text-green-500`}>الرئيسية</Link>
-          <a href="#" className={`transition font-medium ${textColorClass} hover:text-green-500`}>قصتنا</a>
-          <a href="#" className={`transition font-medium ${textColorClass} hover:text-green-500`}>احسب أثرك</a>
-          <Link to="/advisory" className={`transition font-medium ${textColorClass} hover:text-green-500`}>المجلس الاستشاري</Link>
+        <div className={`flex-col md:flex-row md:flex ${isMobileMenuOpen ? 'flex absolute top-full mt-2 right-0 w-full bg-white dark:bg-black p-4 space-y-4 z-40' : 'hidden md:flex'} items-center md:space-x-8 space-x-reverse`}>
+          <Link to="/" className={`transition font-medium ${textColorClass} hover:text-green-500`} onClick={closeMobileMenu}>الرئيسية</Link>
+          <a href="#" className={`transition font-medium ${textColorClass} hover:text-green-500`} onClick={closeMobileMenu}>قصتنا</a>
+          <a href="#" className={`transition font-medium ${textColorClass} hover:text-green-500`} onClick={closeMobileMenu}>احسب أثرك</a>
+          <Link to="/advisory" className={`transition font-medium ${textColorClass} hover:text-green-500`} onClick={closeMobileMenu}>المجلس الاستشاري</Link>
           <button
-            onClick={scrollToPage2}
+            onClick={() => {
+              scrollToPage2();
+              closeMobileMenu();
+            }}
             className={`transition font-medium ${textColorClass} hover:text-green-500`}
           >
             تواصل معنا
           </button>
-        </div>
-
-        <div className="flex items-center space-x-4 space-x-reverse">
-          <div className="hidden md:flex items-center space-x-4 space-x-reverse">
+          <div className="flex md:hidden flex-col items-center space-y-4">
             <button
               onClick={toggleTheme}
               className={`transition-all duration-300 ${textColorClass} hover:text-green-600`}
@@ -115,9 +115,12 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
               ابدأ الآن
             </button>
           </div>
+        </div>
+
+        <div className="flex items-center space-x-4 space-x-reverse md:hidden">
           <button
             onClick={toggleMobileMenu}
-            className={`md:hidden w-8 h-8 flex items-center justify-center transition ${textColorClass} hover:text-green-400`}
+            className={`w-8 h-8 flex items-center justify-center transition ${textColorClass} hover:text-green-400`}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
