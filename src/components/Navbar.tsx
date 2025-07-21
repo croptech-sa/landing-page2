@@ -87,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
           />
         </div>
 
-        <div className={`md:flex ${isMobileMenuOpen ? 'flex' : 'hidden'} flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 space-x-reverse`}>          
+        <div className="hidden md:flex items-center space-x-8 space-x-reverse">
           <Link to="/" className={`transition font-medium ${textColorClass} hover:text-green-500`}>الرئيسية</Link>
           <a href="#" className={`transition font-medium ${textColorClass} hover:text-green-500`}>قصتنا</a>
           <a href="#" className={`transition font-medium ${textColorClass} hover:text-green-500`}>احسب أثرك</a>
@@ -98,7 +98,10 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
           >
             تواصل معنا
           </button>
-          <div className="flex md:hidden flex-col items-center space-y-4">
+        </div>
+
+        <div className="flex items-center space-x-4 space-x-reverse">
+          <div className="hidden md:flex items-center space-x-4 space-x-reverse">
             <button
               onClick={toggleTheme}
               className={`transition-all duration-300 ${textColorClass} hover:text-green-600`}
@@ -112,12 +115,9 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
               ابدأ الآن
             </button>
           </div>
-        </div>
-
-        <div className="flex items-center space-x-4 space-x-reverse md:hidden">
           <button
             onClick={toggleMobileMenu}
-            className={`w-8 h-8 flex items-center justify-center transition ${textColorClass} hover:text-green-400`}
+            className={`md:hidden w-8 h-8 flex items-center justify-center transition ${textColorClass} hover:text-green-400`}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
