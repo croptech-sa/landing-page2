@@ -70,8 +70,6 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
     ? 'text-white'
     : 'text-black dark:text-white';
 
-  const logoColorClass = isScrolled ? 'fill-[#234723]' : 'fill-current';
-
   return (
     <nav
       className={`fixed left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 px-4 md:px-8 top-0
@@ -81,13 +79,12 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
     >
       <div className="flex items-center justify-between py-2">
         <div className="flex items-center">
-          <svg
-            className={`transition-all duration-300 ${isScrolled ? 'w-20 h-20' : 'w-24 h-24 md:w-28 md:h-28'} ${logoColorClass}`}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 100 100"
-          >
-            <use href="/logo.svg#main" />
-          </svg>
+          <img
+            src="/logo.svg"
+            alt="شعار الموقع"
+            className={`transition-all duration-300 ${isScrolled ? 'w-20 h-20' : 'w-24 h-24 md:w-28 md:h-28'}`}
+            style={{ filter: isScrolled ? 'brightness(0) saturate(100%) sepia(100%) hue-rotate(75deg) saturate(500%) brightness(0.9)' : 'none' }}
+          />
         </div>
 
         <div className="hidden md:flex items-center space-x-8 space-x-reverse">
